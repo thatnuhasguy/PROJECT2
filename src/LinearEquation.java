@@ -15,7 +15,7 @@ public class LinearEquation {
     }
     public double yIntercept(){
         slope();
-
+        return 2.2;
     }
     public double slope(){
         double numerator= (double) y2-y1;
