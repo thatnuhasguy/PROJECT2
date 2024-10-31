@@ -16,7 +16,7 @@ public class LinearEquation {
     public double yIntercept(){
         double yInt;
         yInt= y1-(slope()*x1);
-        return yInt;
+        return Math.round(yInt * 100.0) / 100.0;
     }
     public double slope(){
         double numerator= (double) y2-y1;
