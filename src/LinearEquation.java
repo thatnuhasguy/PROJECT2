@@ -14,8 +14,9 @@ public class LinearEquation {
        return Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
     }
     public double yIntercept(){
-        slope();
-        return 2.2;
+        double yInt;
+        yInt= y1-(slope()*x1);
+        return yInt;
     }
     public double slope(){
         double numerator= (double) y2-y1;
