@@ -23,6 +23,10 @@ public class LinearEquation {
     public double slope(){
         double numerator= (double) y2-y1;
         double denominator= (double)x2-x1;
-        return numerator/denominator;
+        double slope= numerator/denominator;
+        return Math.round(slope * 100.0) / 100.0;
+    }
+    public String equation(){
+
     }
 }
