@@ -26,17 +26,52 @@ public class LinearEquation {
         double slope= numerator/denominator;
         return Math.round(slope * 100.0) / 100.0;
     }
-    public String equation(){
-        double yInt= yIntercept();
-        String yIntString= yIntercept()+"";
-
-
-        if (y1==y2){
-            return "y= "+yIntercept();
-        } else if(yIntString.substring(0,1).equals("-")) {
-            return "y= " + (y2 - y1) + "/" + (x2 - x1) + "x - " + (yIntercept()*-1);
-        }else{
-            return "y= " + (y2 - y1) + "/" + (x2 - x1) + "x + " + yIntercept();
+    public String equation() {
+        int numerator = y2 - y1;
+        int denominator = x2 - x1;
+        double slope = numerator / denominator;
+        double yInt = yIntercept();
+        String result = "y = ";
+        if (Math.abs(numerator) % Math.abs(denominator) == 0) {
+            int intSlope = (int) slope;
+            if (intSlope == 1) {
+                result += "x";
+            } else if (intSlope == -1) {
+                result += "-x";
+            } else {
+                result += intSlope + "x";
+            }
+        } else {
+            if (numerator < 0 && denominator < 0) {
+                result += (-numerator) + "/" + (-denominator) + "x";
+            } else if (numerator < 0 || denominator < 0) {
+                result += "-" + (Math.abs(numerator)) + "/" + (Math.abs(denominator)) + "x";
+            } else {
+                result += (numerator) + "/" + (denominator) + "x";
+            }
         }
+        if (yInt > 0 && slope==0) {
+            result +=  yInt;
+        }else if(yInt>0){
+            result += " + " + yInt;
+        }else if (yInt < 0) {
+            result += " - " +  Math.abs(yInt);
+        }
+        return result;
+    }
+
+    public String coordinateForX(double x){
+        double yVal= (slope()*x)+yIntercept();
+        return "("+x+", "+yVal+")";
+    }
+    public String lineInfo(){
+        return "The two points are: "+"("+x1+", "+y1+") and ("+x2+", "+y2+")\n" +
+                "The equation of the line between these points is: "+equation()+"\n" +
+                "The slope of this line is: "+ slope()+"\n" +
+                "The y-intercept of this line is: "+yIntercept()+"\n" +
+                "The distance between the points is "+distance();
+    }
+    public double roundedToHundredth(double toRound){
+        return Math.round(toRound * 100) / 100.0;
     }
 }
