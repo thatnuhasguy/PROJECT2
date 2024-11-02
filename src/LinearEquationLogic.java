@@ -16,6 +16,7 @@ public class LinearEquationLogic {
         LinearEquation first= new LinearEquation(Integer.parseInt(xvalc1),Integer.parseInt(yvalc1),Integer.parseInt(xvalc2),Integer.parseInt(yvalc2));
 
 
+        return coor1;
     }
 }
-}
+
