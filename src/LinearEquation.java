@@ -27,6 +27,14 @@ public class LinearEquation {
         return Math.round(slope * 100.0) / 100.0;
     }
     public String equation(){
+       /* double yInt= yIntercept();
+        String yIntString= yIntercept()+"";
+        */
 
+        if (y1==y2){
+            return "y= "+yIntercept();
+        } else {
+            return "y= " + (y2 - y1) + "/" + (x2 - x1) + "x " + yIntercept();
+        }
     }
 }
