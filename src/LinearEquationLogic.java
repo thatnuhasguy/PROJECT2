@@ -1,10 +1,15 @@
 import java.util.Scanner;
 public class LinearEquationLogic {
-
+    private Scanner scan;
+    public LinearEquationLogic() {
+        scan = new Scanner(System.in);
+    }
+    private void welcomeUser(){
+        System.out.println("--Welcome to the linear equation calculator!--");
+    }
 
     public void start(){
-        Scanner scan= new Scanner(System.in);
-        System.out.println("Welcome to the linear equation calculator!");
+        welcomeUser();
         System.out.print("Enter coordinate 1: ");
         String coor1= scan.nextLine();
         System.out.print("Enter coordinate 2: ");
@@ -45,6 +50,7 @@ public class LinearEquationLogic {
         }
         System.out.println("Thank you for using the slope calculator, goodbye!");
     }
+
 
 }
 

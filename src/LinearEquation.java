@@ -12,19 +12,19 @@ public class LinearEquation {
     }
     public double distance(){
         double distance=Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
-        return Math.round(distance * 100.0) / 100.0;
+        return roundedToHundredth(distance);
 
     }
     public double yIntercept(){
         double yInt;
         yInt= y1-(slope()*x1);
-        return Math.round(yInt * 100.0) / 100.0;
+        return roundedToHundredth(yInt);
     }
     public double slope(){
         double numerator= (double) y2-y1;
         double denominator= (double)x2-x1;
         double slope= numerator/denominator;
-        return Math.round(slope * 100.0) / 100.0;
+        return roundedToHundredth(slope);
     }
     public String equation() {
         int numerator = y2 - y1;
@@ -54,6 +54,8 @@ public class LinearEquation {
         }
         if (yInt > 0 && slope==0) {
             result +=  yInt;
+        }else if (yInt==0){
+            //dont add anything
         }else if(yInt>0){
             result += " + " + yInt;
         }else if (yInt < 0) {
@@ -65,14 +67,14 @@ public class LinearEquation {
     public String coordinateForX(double x){
         if(x2-x1!=0){
         double yVal= (slope()*x)+yIntercept();
-        return "("+x+", "+yVal+")";
+        return "("+x+", "+roundedToHundredth(yVal)+")";
         } else{
             return "";
         }
     }
     public String lineInfo() {
         if (x2 - x1 == 0) {
-           return "These points are on a vertical line: x= "+x1;
+           return "Mate, that line you have here has an undefined slope. Its a vertical line where x= "+x1;
         } else {
             return "The two points are: " + "(" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")\n" +
                     "The equation of the line between these points is: " + equation() + "\n" +
