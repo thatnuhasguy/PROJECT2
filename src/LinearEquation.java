@@ -38,7 +38,9 @@ public class LinearEquation {
                 result += "x";
             } else if (intSlope == -1) {
                 result += "-x";
-            } else {
+            } else if (intSlope==0){
+                // blank because I do not wish to add anything
+            } else{
                 result += intSlope + "x";
             }
         } else {
@@ -61,15 +63,23 @@ public class LinearEquation {
     }
 
     public String coordinateForX(double x){
+        if(x2-x1!=0){
         double yVal= (slope()*x)+yIntercept();
         return "("+x+", "+yVal+")";
+        } else{
+            return "";
+        }
     }
-    public String lineInfo(){
-        return "The two points are: "+"("+x1+", "+y1+") and ("+x2+", "+y2+")\n" +
-                "The equation of the line between these points is: "+equation()+"\n" +
-                "The slope of this line is: "+ slope()+"\n" +
-                "The y-intercept of this line is: "+yIntercept()+"\n" +
-                "The distance between the points is "+distance();
+    public String lineInfo() {
+        if (x2 - x1 == 0) {
+           return "These points are on a vertical line: x= "+x1;
+        } else {
+            return "The two points are: " + "(" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")\n" +
+                    "The equation of the line between these points is: " + equation() + "\n" +
+                    "The slope of this line is: " + slope() + "\n" +
+                    "The y-intercept of this line is: " + yIntercept() + "\n" +
+                    "The distance between the points is " + distance();
+        }
     }
     public double roundedToHundredth(double toRound){
         return Math.round(toRound * 100) / 100.0;
